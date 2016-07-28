@@ -4,7 +4,7 @@
 
 #define MAX_ROMAN_STRING (40)
 
-#define F_DBG
+/* #define F_DBG */
 
 typedef struct {
 	int dec;
@@ -17,7 +17,7 @@ int decToRom(int dec, char** rom);
 
 int main() 
 {
-	char testRoman[] = "XDIV"; // MCMX - 1910
+	char testRoman[] = "XDIV"; /* MCMX - 1910 */
 	int convertRoman = romToDec( testRoman);
 	char* romanChar = NULL;
 	
@@ -155,9 +155,10 @@ int decToRom(int dec, char** rom)
 			}
 		}
 	}
-	
-	*rom = (char*)malloc( (strlen(romanRes)+1)*sizeof(char));
-	memcpy( *rom, romanRes, (strlen(romanRes)+1)*sizeof(char));
+	romanRes[romanIndex] = '\0';
+
+	*rom = (char*)malloc( romanIndex*sizeof(char));
+	memcpy( *rom, romanRes, romanIndex);
 	
 	return res;
 }
